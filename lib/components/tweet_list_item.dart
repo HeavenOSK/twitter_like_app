@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 const _displayName = 'へぶん🦌';
 const _accountName = '@heavenOSK';
@@ -21,19 +22,35 @@ class TweetListItem extends StatelessWidget {
         children: <Widget>[
           _buildUserImage(context),
           Expanded(
-            child: Row(
+            child: Column(
               children: <Widget>[
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      _buildHeading(context),
-                      Text(_tweetContent,
-                          style: Theme.of(context).primaryTextTheme.body1),
-                    ],
-                  ),
+                Row(
+                  children: <Widget>[
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          _buildHeading(context),
+                          Text(_tweetContent,
+                              style: Theme.of(context).primaryTextTheme.body1),
+                        ],
+                      ),
+                    ),
+                    SizedBox(width: 8)
+                  ],
                 ),
-                SizedBox(width: 8)
+                SizedBox(height: 8),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    _buildIconButton(FontAwesomeIcons.comment),
+                    _buildIconButton(FontAwesomeIcons.retweet),
+                    _buildIconButton(FontAwesomeIcons.heart),
+                    _buildIconButton(Icons.file_upload),
+                    SizedBox(width: 4)
+                  ],
+                ),
+                SizedBox(height: 8),
               ],
             ),
           ),
@@ -60,6 +77,17 @@ class TweetListItem extends StatelessWidget {
         Icons.account_circle,
         size: 80,
         color: Theme.of(context).primaryIconTheme.color,
+      ),
+    );
+  }
+
+  Widget _buildIconButton(IconData iconData, {VoidCallback onTap}) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Icon(
+        iconData,
+        size: 18,
+        color: Colors.blueGrey,
       ),
     );
   }

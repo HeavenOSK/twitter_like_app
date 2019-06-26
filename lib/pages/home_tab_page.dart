@@ -22,6 +22,8 @@ class _HomeTabPageState extends State<HomeTabPage> {
 
   CupertinoTabBar _buildTabBar() {
     return CupertinoTabBar(
+      inactiveColor: Colors.blueGrey,
+      backgroundColor: Colors.white,
       items: [
         BottomNavigationBarItem(
           icon: Icon(Icons.home),
